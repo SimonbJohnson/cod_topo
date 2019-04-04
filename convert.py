@@ -25,6 +25,7 @@ cod =[
 		#{'iso3':'KGZ', 'iso2':'KG', 'use':'KG', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'KHM', 'iso2':'KH', 'use':'KH', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'LBN', 'iso2':'LB', 'use':'LB', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
+		{'iso3':'MOZ', 'iso2':'MZ', 'use':'MZ', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'MRT', 'iso2':'MT', 'use':'MT', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'MWI', 'iso2':'MW', 'use':'MW', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'NER', 'iso2':'NE', 'use':'NE', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
@@ -36,14 +37,15 @@ cod =[
 		#{'iso3':'SSD', 'iso2':'SS', 'use':'SS', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'TCD', 'iso2':'TD', 'use':'TD', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 		#{'iso3':'UKR', 'iso2':'UA', 'use':'UA', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		{'iso3':'VUT', 'iso2':'VU', 'use':'VU', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		{'iso3':'YEM', 'iso2':'YE', 'use':'YE', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		{'iso3':'ZWE', 'iso2':'ZW', 'use':'ZW', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
+		#{'iso3':'VEN', 'iso2':'VE', 'use':'VEN', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
+		#{'iso3':'VUT', 'iso2':'VU', 'use':'VU', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
+		#{'iso3':'YEM', 'iso2':'YE', 'use':'YE', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
+		#{'iso3':'ZWE', 'iso2':'ZW', 'use':'ZW', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
 	]
 
 for country in cod:
 	print country
-	for level in range(1,3):
+	for level in range(1,4):
 		print level
 		geojson = 'geoms/geojson/'+country['iso3']+'/'+str(level)+'/geom.geojson'
 		topojson = 'geoms/topojson/'+country['iso3']+'/'+str(level)+'/geom.json'
