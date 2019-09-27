@@ -1,53 +1,28 @@
 import os
 import urllib
+import csv
 
-cod =[
-		#{'iso3':'BDI', 'iso2':'BI', 'use':'BDI', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'MLI', 'iso2':'ML', 'use':'ML', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'NGA', 'iso2':'NG', 'use':'NG', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'CAF', 'iso2':'CF', 'use':'CF', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'BFA', 'iso2':'BF', 'use':'BF', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'CIV', 'iso2':'CI', 'use':'CI', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'COD', 'iso2':'CD', 'use':'CD', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		{'iso3':'COL', 'iso2':'CO', 'use':'CO', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'GIN', 'iso2':'GN', 'use':'GN', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'SLE', 'iso2':'SL', 'use':'SL', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'AGO', 'iso2':'AO', 'use':'AO', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'BGD', 'iso2':'BD', 'use':'BD', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'CMR', 'iso2':'CM', 'use':'CM', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'EGY', 'iso2':'EG', 'use':'EG', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'GTM', 'iso2':'GT', 'use':'GT', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		##{'iso3':'HND', 'iso2':'HD', 'use':'HD', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'HTI', 'iso2':'HT', 'use':'HT', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'IRQ', 'iso2':'IQ', 'use':'IQ', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'KDN', 'iso2':'KD', 'use':'KDN', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'KEN', 'iso2':'KE', 'use':'KE', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'KGZ', 'iso2':'KG', 'use':'KG', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'KHM', 'iso2':'KH', 'use':'KH', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'LBN', 'iso2':'LB', 'use':'LB', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'MRT', 'iso2':'MT', 'use':'MT', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'MWI', 'iso2':'MW', 'use':'MW', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'NER', 'iso2':'NE', 'use':'NE', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'NPL', 'iso2':'NP', 'use':'NP', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'PAK', 'iso2':'PK', 'use':'PK', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'PSE', 'iso2':'PS', 'use':'PS', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'SDN', 'iso2':'SD', 'use':'SD', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'SOM', 'iso2':'SO', 'use':'SO', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'SSD', 'iso2':'SS', 'use':'SS', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'TCD', 'iso2':'TD', 'use':'TD', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':1,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'UKR', 'iso2':'UA', 'use':'UA', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'VUT', 'iso2':'VU', 'use':'VU', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'YEM', 'iso2':'YE', 'use':'YE', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-		#{'iso3':'ZWE', 'iso2':'ZW', 'use':'ZW', 'url':'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{level}}/query?where=1%3D1&outFields=*&f=geojson','adjustment':0,'code_att':'admin{{level}}Pcode','name_att':'admin{{level}}RefName'},
-	]
+links = []
+url = 'https://gistmaps.itos.uga.edu/arcgis/rest/services/COD_External/{{country}}_pcode/MapServer/{{layer}}/query?where=1%3D1&outFields=*&f=geojson'
 
-for country in cod:
-	print country
-	for level in range(1,3):
-		print level
-		url = country['url'].replace('{{country}}',country['iso3']).replace('{{level}}',str(level+country['adjustment']))
-		print url
-		if not os.path.exists('geoms/geojson/'+country['iso3']+'/'+str(level)):
-			os.makedirs('geoms/geojson/'+country['iso3']+'/'+str(level))
+with open('itos_service.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    for row in csv_reader:
+    	if row[1]=='MapServer':
+    		if row[2]=='pcode':
+	    		if len(row[4])==6 and row[4]!='Admin0':
+	    			links.append([row[0],row[4][5:],row[3]])
+
+print links
+
+for row in links:
+	country = row[0]
+	layer = row[2]
+	level = row[1]
+	if country>'WCA' and int(layer)>-1:
+		newURL = url.replace('{{country}}',country).replace('{{layer}}',layer)
+		print newURL
+		if not os.path.exists('geoms/geojson/'+country+'/'+str(level)):
+			os.makedirs('geoms/geojson/'+country+'/'+str(level))
 		file = urllib.URLopener()
-		file.retrieve(url, 'geoms/geojson/'+country['iso3']+'/'+str(level)+'/geom.geojson')
+		file.retrieve(newURL, 'geoms/geojson/'+country+'/'+str(level)+'/geom.geojson')
