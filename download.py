@@ -17,12 +17,15 @@ print links
 
 for row in links:
 	country = row[0]
-	layer = row[2]
-	level = row[1]
-	if country>'WCA' and int(layer)>-1:
+	if country>'COL':
+		layer = row[2]
+		level = row[1]
 		newURL = url.replace('{{country}}',country).replace('{{layer}}',layer)
 		print newURL
 		if not os.path.exists('geoms/geojson/'+country+'/'+str(level)):
 			os.makedirs('geoms/geojson/'+country+'/'+str(level))
 		file = urllib.URLopener()
-		file.retrieve(newURL, 'geoms/geojson/'+country+'/'+str(level)+'/geom.geojson')
+		try:
+			file.retrieve(newURL, 'geoms/geojson/'+country+'/'+str(level)+'/geom.geojson')
+		except:
+			print "Could not download "+country+" - level "+str(level)
